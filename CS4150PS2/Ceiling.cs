@@ -20,11 +20,17 @@ namespace CS4150PS2
         {
             string line = "";
             char[] whitespace = { ' ', '\t' };
+            string[] numbers;
+            int count = 0;
             while((line = Console.ReadLine()) != null)
             {
-                string[] numbers = line.Split(whitespace);
-
+                if (count > 0)
+                {
+                    numbers = line.Split(whitespace);
+                }
+                count++;
             }
+            
             return "";
         }
     }
