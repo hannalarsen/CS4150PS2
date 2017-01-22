@@ -29,9 +29,10 @@ namespace CS4150PS2
             char[] whitespace = { ' ', '\t' };
             string[] numbers;
             int count = 0;
+            int uniqueCount = 0;
             BST tree;
             TreeList = new List<BST>();
-            while((line = Console.ReadLine()) != null)
+            while((line = Console.ReadLine()) != null && line != "")
             {
                 if (count > 0)
                 {
@@ -47,9 +48,30 @@ namespace CS4150PS2
                 count++;
             }
             
+            for (int i = 0; i < TreeList.Count - 1; i++)
+            {
+                if (SameShape(TreeList.ElementAt(i).GetRoot(), TreeList.ElementAt(i + 1).GetRoot()) == false)
+                {
+                    uniqueCount++;
+                }
+            }
+            return uniqueCount.ToString();
+        }
 
-            
-            return "";
+        public bool SameShape(Node root1, Node root2)
+        {
+            // Empty trees are same size
+            if (root1 == null && root2 == null)
+                return true;
+
+            // Empty tree is not same shape as non-empty one (obviously)
+            if ((root1 == null && root2 != null)
+                || (root1 != null && root2 == null))
+                return false;
+
+            // otherwise check recursively
+            return SameShape(root1.GetLeft(), root2.GetLeft())
+                && SameShape(root1.GetRight(), root2.GetRight());
         }
     }
 
@@ -71,6 +93,24 @@ namespace CS4150PS2
             this.value = value;
             left = null;
             right = null;
+        }
+
+        /// <summary>
+        /// Gets Left child of node
+        /// </summary>
+        /// <returns></returns>
+        public Node GetLeft()
+        {
+            return left;
+        }
+
+        /// <summary>
+        /// Gets right child of node
+        /// </summary>
+        /// <returns></returns>
+        public Node GetRight()
+        {
+            return right;
         }
     }
 
