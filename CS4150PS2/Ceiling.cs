@@ -50,9 +50,12 @@ namespace CS4150PS2
             
             for (int i = 0; i < TreeList.Count - 1; i++)
             {
-                if (SameShape(TreeList.ElementAt(i).GetRoot(), TreeList.ElementAt(i + 1).GetRoot()) == false)
+                for (int j = i + 1; j < TreeList.Count; j++)
                 {
-                    uniqueCount++;
+                    if (SameShape(TreeList.ElementAt(i).GetRoot(), TreeList.ElementAt(i + 1).GetRoot()) == false)
+                    {
+                        uniqueCount++;
+                    }
                 }
             }
             return uniqueCount.ToString();
