@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CS4150PS2
 {
-    class Ceiling
+    public class Ceiling
     {
         /// <summary>
         /// List of trees from the input
@@ -16,23 +16,19 @@ namespace CS4150PS2
         static void Main(string[] args)
         {
             Ceiling c = new Ceiling();
-            Console.WriteLine(c.UniqueTrees());
+            Console.WriteLine(c.CreateTrees());
         }
 
-        /// <summary>
-        /// Determines the number of unique tree shapes
-        /// </summary>
-        /// <returns></returns>
-        public string UniqueTrees()
+
+        public string CreateTrees()
         {
             string line = "";
             char[] whitespace = { ' ', '\t' };
             string[] numbers;
             int count = 0;
-            int uniqueCount = 0;
             BST tree;
             TreeList = new List<BST>();
-            while((line = Console.ReadLine()) != null && line != "")
+            while ((line = Console.ReadLine()) != null && line != "")
             {
                 if (count > 0)
                 {
@@ -47,20 +43,93 @@ namespace CS4150PS2
                 }
                 count++;
             }
-            
-            for (int i = 0; i < TreeList.Count - 1; i++)
+            return UniqueTrees();
+        }
+        /// <summary>
+        /// Determines the number of unique tree shapes
+        /// </summary>
+        /// <returns></returns>
+        public string UniqueTrees()
+        {
+            int uniqueCount = 0;
+            //string line = "";
+            //char[] whitespace = { ' ', '\t' };
+            //string[] numbers;
+            //int count = 0;
+            //int uniqueCount = 0;
+            //BST tree;
+            //TreeList = new List<BST>();
+            //while((line = Console.ReadLine()) != null && line != "")
+            //{
+            //    if (count > 0)
+            //    {
+            //        // Creates a new tree from the input
+            //        tree = new BST();
+            //        numbers = line.Split(whitespace);
+            //        foreach (string number in numbers)
+            //        {
+            //            tree.AddNode(number);
+            //        }
+            //        TreeList.Add(tree);
+            //    }
+            //    count++;
+            //}
+
+            if(TreeList.Count == 1)
             {
-                for (int j = i + 1; j < TreeList.Count; j++)
+                return "1";
+            }
+
+            // Checks to see how many trees are the same shape
+            using (var e = TreeList.GetEnumerator())
+            {
+                var temp = new List<BST>();
+                while (e.MoveNext())
                 {
-                    if (SameShape(TreeList.ElementAt(i).GetRoot(), TreeList.ElementAt(i + 1).GetRoot()) == false)
+                    if(temp.Any(r=> SameShape(r.GetRoot(), e.Current.GetRoot())))
                     {
-                        uniqueCount++;
+                        continue;
                     }
+                    temp.Add(e.Current);
+                    uniqueCount++;
+                }
+            }
+                return uniqueCount.ToString();
+        }
+
+
+        public string UniqueTreesTesting(List<BST> t)
+        {
+            int uniqueCount = 0;
+            if (t.Count == 1)
+            {
+                return "1";
+            }
+
+           
+            // Checks to see how many trees are the same shape
+            using (var e = t.GetEnumerator())
+            {
+                var temp = new List<BST>();
+                while (e.MoveNext())
+                {
+                    if (temp.Any(r => SameShape(r.GetRoot(), e.Current.GetRoot())))
+                    {
+                        continue;
+                    }
+                    
+                    uniqueCount++;
+                    temp.Add(e.Current);
                 }
             }
             return uniqueCount.ToString();
         }
-
+        /// <summary>
+        /// Determines if two trees are the same shape
+        /// </summary>
+        /// <param name="root1"></param>
+        /// <param name="root2"></param>
+        /// <returns></returns>
         public bool SameShape(Node root1, Node root2)
         {
             // Empty trees are same size
@@ -124,7 +193,7 @@ namespace CS4150PS2
     {
         // Root of the tree
         private Node root;
-        private int count;
+
 
         /// <summary>
         /// BST Constructor
@@ -132,7 +201,6 @@ namespace CS4150PS2
         public BST()
         {
             root = null;
-            count = 0;
         }
 
         /// <summary>
@@ -164,6 +232,7 @@ namespace CS4150PS2
                 return null;
             }
         }
+
         /// <summary>
         /// Finds the position of node to be inserted
         /// </summary>
