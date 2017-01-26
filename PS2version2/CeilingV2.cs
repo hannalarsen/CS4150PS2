@@ -28,7 +28,7 @@ namespace PS2version2
                 int count = 0;
                 BST tree;
                 TreeList = new List<BST>();
-                while ((line = Console.ReadLine()) != null && line != "")
+                while ((line = Console.ReadLine()) != null && line.Length > 0)
                 {
                     if (count > 0)
                     {
