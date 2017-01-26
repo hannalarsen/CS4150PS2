@@ -43,87 +43,46 @@ namespace CS4150PS2
                 }
                 count++;
             }
-            return UniqueTrees();
+            return UniqueTrees(TreeList);
         }
         /// <summary>
         /// Determines the number of unique tree shapes
         /// </summary>
         /// <returns></returns>
-        public string UniqueTrees()
+        public string UniqueTrees(List<BST> t)
         {
             int uniqueCount = 0;
-            //string line = "";
-            //char[] whitespace = { ' ', '\t' };
-            //string[] numbers;
-            //int count = 0;
-            //int uniqueCount = 0;
-            //BST tree;
-            //TreeList = new List<BST>();
-            //while((line = Console.ReadLine()) != null && line != "")
-            //{
-            //    if (count > 0)
-            //    {
-            //        // Creates a new tree from the input
-            //        tree = new BST();
-            //        numbers = line.Split(whitespace);
-            //        foreach (string number in numbers)
-            //        {
-            //            tree.AddNode(number);
-            //        }
-            //        TreeList.Add(tree);
-            //    }
-            //    count++;
-            //}
-
-            if(TreeList.Count == 1)
+            int sameCount = 0;
+            if (t.Count == 0)
             {
-                return "1";
+                return "0";
             }
-
-            // Checks to see how many trees are the same shape
-            using (var e = TreeList.GetEnumerator())
-            {
-                var temp = new List<BST>();
-                while (e.MoveNext())
-                {
-                    if(temp.Any(r=> SameShape(r.GetRoot(), e.Current.GetRoot())))
-                    {
-                        continue;
-                    }
-                    temp.Add(e.Current);
-                    uniqueCount++;
-                }
-            }
-                return uniqueCount.ToString();
-        }
-
-
-        public string UniqueTreesTesting(List<BST> t)
-        {
-            int uniqueCount = 0;
             if (t.Count == 1)
             {
                 return "1";
             }
 
-           
             // Checks to see how many trees are the same shape
-            using (var e = t.GetEnumerator())
+
+            for (int i = 0; i < t.Count - 1; i++)
             {
-                var temp = new List<BST>();
-                while (e.MoveNext())
+                for (int j = i + 1; j < t.Count; j++)
                 {
-                    if (temp.Any(r => SameShape(r.GetRoot(), e.Current.GetRoot())))
+                    if (SameShape(t.ElementAt(i).GetRoot(), t.ElementAt(j).GetRoot()))
                     {
-                        continue;
+                        sameCount++;
                     }
-                    
-                    uniqueCount++;
-                    temp.Add(e.Current);
+                    // If all the same
+                    if (sameCount == t.Count)
+                    {
+                        return "1";
+                    }
                 }
             }
+            uniqueCount = t.Count - sameCount;
             return uniqueCount.ToString();
         }
+
         /// <summary>
         /// Determines if two trees are the same shape
         /// </summary>

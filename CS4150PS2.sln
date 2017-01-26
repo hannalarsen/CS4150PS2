@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS4150PS2", "CS4150PS2\CS41
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CeilingTests", "CeilingTests\CeilingTests.csproj", "{075E3FFA-064C-448B-BAC9-ABE3F715CE80}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PS2version2", "PS2version2\PS2version2.csproj", "{FF583DAF-7F7F-4E42-86F1-B2774CD0F37A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CeilingTestsV2", "CeilingTestsV2\CeilingTestsV2.csproj", "{0B03E34C-4209-4D30-A4D5-8E21C6740D20}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{075E3FFA-064C-448B-BAC9-ABE3F715CE80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{075E3FFA-064C-448B-BAC9-ABE3F715CE80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{075E3FFA-064C-448B-BAC9-ABE3F715CE80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF583DAF-7F7F-4E42-86F1-B2774CD0F37A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF583DAF-7F7F-4E42-86F1-B2774CD0F37A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF583DAF-7F7F-4E42-86F1-B2774CD0F37A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF583DAF-7F7F-4E42-86F1-B2774CD0F37A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B03E34C-4209-4D30-A4D5-8E21C6740D20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B03E34C-4209-4D30-A4D5-8E21C6740D20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B03E34C-4209-4D30-A4D5-8E21C6740D20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B03E34C-4209-4D30-A4D5-8E21C6740D20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
