@@ -69,7 +69,6 @@ namespace PS2version2
                     if (temp.Count == 0)
                     {
                         temp.Add(e.Current);
-                        //sameCount++;
                         continue;
                     }
                     if (temp.Any(r => SameShape(r.GetRoot(), e.Current.GetRoot())))
@@ -78,7 +77,6 @@ namespace PS2version2
                             continue;
                         }
                     temp.Add(e.Current);                   
-                    //uniqueCount++;
                 }
                 }
             // If all same shape
@@ -86,7 +84,6 @@ namespace PS2version2
             {
                 return "1";
             }
-            // uniqueCount = TreeList.Count - sameCount;
             uniqueCount = temp.Count;
                 return uniqueCount.ToString();
             }
@@ -213,19 +210,28 @@ namespace PS2version2
                 }
                 else
                 {
-                    int compareResult = string.Compare(n.value, tree.value);
-                    if (compareResult == 0)
+                try
+                {
+                    int nValue = Convert.ToInt32(n.value);
+                    int treeValue = Convert.ToInt32(tree.value);
+
+                    if (nValue == treeValue)
                     {
                         throw new Exception();
                     }
-                    else if (compareResult < 0)
+                    else if(nValue < treeValue)
                     {
                         Add(n, ref tree.left);
                     }
-                    else if (compareResult > 0)
+                    else if (nValue > treeValue)
                     {
                         Add(n, ref tree.right);
                     }
+                }
+                catch (Exception e1)
+                {
+                    return;
+                }
                 }
             }
         }

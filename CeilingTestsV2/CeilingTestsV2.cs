@@ -293,6 +293,37 @@ namespace CeilingTestsV2
             }
             Assert.AreEqual("3", c.UniqueTrees(trees));
         }
+
+        [TestMethod]
+        public void TestCorrect4()
+        {
+            c = new CeilingV2();
+            trees = new List<BST>();
+            int count = 0;
+            BST tree;
+            string[] numbers;
+            char[] whitespace = { ' ', '\t' };
+            using (StreamReader sr = File.OpenText(@"C:\Users\hannal\Documents\testCorrect4.txt"))
+            {
+                string line = "";
+                while ((line = sr.ReadLine()) != null)
+                {
+                    if (count > 0)
+                    {
+                        // Creates a new tree from the input
+                        tree = new BST();
+                        numbers = line.Split(whitespace);
+                        foreach (string number in numbers)
+                        {
+                            tree.AddNode(number);
+                        }
+                        trees.Add(tree);
+                    }
+                    count++;
+                }
+            }
+            Assert.AreEqual("4", c.UniqueTrees(trees));
+        }
     }
 
 }
